@@ -6,20 +6,15 @@ pipeline {
             steps {
                 echo 'Building..'
             }
-        }
-		
+        }		
 		
 		
         stage('Test') {
             steps {
                 echo 'Testing..'
-				  sh 'npm test' 
+				  sh 'npm run test' 
             }
         }
-		
-
-
-
 		 
 	
         stage('Deploy') {
@@ -27,6 +22,7 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+		
     }
 	 post {
     	
