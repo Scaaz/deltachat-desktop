@@ -25,7 +25,8 @@ pipeline {
 			
 				script{
 			
-                    last_started = env.STAGE_NAME					
+                    last_started = env.STAGE_NAME		
+					currentBuild.currentResult = 'FAILED'				
 					if("${currentBuild.currentResult}"=='SUCCESS'){			
 					echo 'Testing..'				 
 					sh 'npm run test' 
