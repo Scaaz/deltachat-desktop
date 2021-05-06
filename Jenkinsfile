@@ -27,7 +27,7 @@ pipeline {
 			
                     last_started = env.STAGE_NAME	
 echo "Build status: ${currentBuild.currentResult}"					
-					if(currentBuild.result=='SUCCESS'){			
+					if("${currentBuild.currentResult}"=='SUCCESS'){			
 					echo 'Testing..'				 
 					sh 'npm run test' 
 						}	
