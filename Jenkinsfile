@@ -32,14 +32,16 @@ pipeline {
         stage('Test') {
 							
             steps {
-			if(currentBuild.result=='SUCCESS'){
+			script{
+					if(currentBuild.result=='SUCCESS'){
 			
-				echo 'Testing..'				 
-				sh 'npm run test' 
-					}	
-			else
-			echo 'Build failed - testing was cancelled'          
-            }
+						echo 'Testing..'				 
+						sh 'npm run test' 
+						}	
+					else{
+					echo 'Build failed - testing was cancelled'}
+				  }
+			}
         }
 		 post {
     	
