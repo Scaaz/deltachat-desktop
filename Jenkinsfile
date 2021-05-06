@@ -15,32 +15,18 @@ pipeline {
                 sh 'npm run build'
             }
         }		
-		 post {
-    	
-    	success {
-	 echo 'Building success!'		
-    	}    	
-    	failure {
-		emailext attachLog: true,
-			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} Check attached log for more details...", 
-			subject: 'Jenkins building has failed', 
-			to: 'szymon.czekaj0@gmail.com'
-    	}
-    }
-		
-		
+		 		 
         stage('Test') {
 							
             steps {
 			script{
-					if(currentBuild.result=='SUCCESS'){
-			
-						echo 'Testing..'				 
-						sh 'npm run test' 
+					if(currentBuild.result=='SUCCESS'){			
+					echo 'Testing..'				 
+					sh 'npm run test' 
 						}	
 					else{
-					echo 'Build failed - testing was cancelled'}
-				  }
+					echo 'Build failed - testing was cancelled'}     
+				}
 			}
         }
 		 post {
