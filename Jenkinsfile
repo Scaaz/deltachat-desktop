@@ -29,7 +29,17 @@ pipeline {
 				}
 			}
         }
-		 post {
+		 
+		 
+	
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+		
+    }
+	post {
     	
     	success {
 	 echo 'Testing success!'		
@@ -41,15 +51,6 @@ pipeline {
 			subject: 'Jenkins testing has failed', 
 			to: 'szymon.czekaj0@gmail.com'
     	}
-    }
-		 
-	
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-		
     }
 	
 }
