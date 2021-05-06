@@ -11,7 +11,7 @@ pipeline {
                 sh 'npm install'
 				
 				sh 'apt install git -y'				
-				sh 'git clone https://github.com/deltachat/deltachat-desktop.git'
+				sh 'git clone https://github.com/deltachat/deltachat-desktop.git .'
                 sh 'npm run build'
 				  script { 
                 currentBuild.result='UNSTABLE'
