@@ -6,7 +6,6 @@ pipeline {
             steps {
 			script 	{
                     last_started = env.STAGE_NAME
-					currentBuild.currentResult = 'FAILED'
 					}
                 echo 'Building..'
                 sh 'apt install npm -y'
