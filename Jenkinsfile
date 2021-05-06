@@ -9,9 +9,8 @@ pipeline {
                 sh 'npm i npm@latest -g'
                 sh 'npm fund'
                 sh 'npm install'
-				
-				sh 'apt install git -y'				
-				sh 'git clone https://github.com/deltachat/deltachat-desktop.git .'
+						
+				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
 				  script { 
                 currentBuild.result='UNSTABLE'
