@@ -4,6 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+			script 	{
+                    last_started = env.STAGE_NAME
+					}
                 echo 'Building..'
                 sh 'apt install npm -y'
                 sh 'npm i npm@latest -g'
@@ -14,14 +17,18 @@ pipeline {
                 sh 'npm run build'
 				  script { 
                 currentBuild.result='UNSTABLE'
+				
             }
             }
         }		
 		 		 
         stage('Test') {
 							
-            steps {
-			script{
+            steps{
+			
+				script{
+			
+                    last_started = env.STAGE_NAME					
 					if(currentBuild.result=='SUCCESS'){			
 					echo 'Testing..'				 
 					sh 'npm run test' 
@@ -38,6 +45,10 @@ pipeline {
 	
         stage('Deploy') {
             steps {
+			script{
+			
+                    last_started = env.STAGE_NAME
+					}
                 echo 'Deploying....'
             }
         }
@@ -50,10 +61,10 @@ pipeline {
 		echo 'success'		
     	}
     	
-    	failure {
+    	unsuccessful {
 		emailext attachLog: true,
 			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} Check attached log for more details...", 
-			subject: 'Jenkins has failed', 
+			subject: "${last_started} has failed", 
 			to: 'szymon.czekaj0@gmail.com'
     	}
     }
