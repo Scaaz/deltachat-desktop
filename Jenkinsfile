@@ -15,6 +15,7 @@ pipeline {
 						
 				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
+				currentBuild.currentResult = 'FAILED'	
 				  
             }
         }		
@@ -26,7 +27,7 @@ pipeline {
 				script{
 			
                     last_started = env.STAGE_NAME		
-					currentBuild.currentResult = 'FAILED'				
+								
 					if("${currentBuild.currentResult}"=='SUCCESS'){			
 					echo 'Testing..'				 
 					sh 'npm run test' 
