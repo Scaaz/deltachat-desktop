@@ -27,7 +27,7 @@ pipeline {
 					sh 'npm run test' 
 						}	
 					else{
-					echo 'Build status: ${currentBuild.currentResult}'
+					echo "Build status: ${currentBuild.currentResult}"
 					echo 'Build failed - testing was cancelled'}  
 					
 				}
