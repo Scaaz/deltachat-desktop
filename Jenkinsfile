@@ -15,10 +15,7 @@ pipeline {
 						
 				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
-				  script { 
-                currentBuild.result='UNSTABLE'
-				
-            }
+				  
             }
         }		
 		 		 
