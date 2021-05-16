@@ -15,7 +15,11 @@ pipeline {
 						
 				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
-				  
+				
+				stash includes: 'node_modules/*', name: 'Artefact1'
+				stash includes: 'package-lock.json', name: 'Artefact2'
+				
+				echo 'Building finished successfully!'
             }
         }		
 		 		 
@@ -36,18 +40,26 @@ pipeline {
 					echo 'Build failed - testing was cancelled'}  
 					
 				}
-			}
+				
+			}			
+			echo 'Testing finished successfully!'
         }
 		 
 		 
 	
         stage('Deploy') {
             steps {
-			script{
 			
+			script{			
                     last_started = env.STAGE_NAME
-					}
+				  }
+					
                 echo 'Deploying....'
+				unstash 'Artefact1'
+				unstash 'Artefact2'
+				
+				
+				echo 'Deploying finished successfully!'
             }
         }
 		
