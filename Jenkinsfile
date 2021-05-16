@@ -21,7 +21,7 @@ pipeline {
 				stash includes: 'node_modules/*', name: 'Artefact1'
 				stash includes: 'package-lock.json', name: 'Artefact2'
 				
-				pwd
+				sh 'pwd'
 				echo 'Building finished successfully!'
             }
         }		
