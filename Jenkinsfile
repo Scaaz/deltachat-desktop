@@ -16,6 +16,7 @@ pipeline {
 				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
 				
+				ls
 				stash includes: 'node_modules/*', name: 'Artefact1'
 				stash includes: 'package-lock.json', name: 'Artefact2'
 				
