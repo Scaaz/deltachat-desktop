@@ -40,9 +40,8 @@ pipeline {
 					echo 'Build failed - testing was cancelled'}  
 					
 				}
-				
-			}			
-			echo 'Testing finished successfully!'
+				echo 'Testing finished successfully!'
+			}						
         }
 		 
 		 
