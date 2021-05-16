@@ -17,11 +17,6 @@ pipeline {
 				git 'https://github.com/Scaaz/deltachat-desktop.git'
                 sh 'npm run build'
 				
-				sh 'ls'
-				stash includes: 'node_modules/*', name: 'Artefact1'
-				stash includes: 'package-lock.json', name: 'Artefact2'
-				
-				
 				echo 'Building finished successfully!'
             }
         }		
@@ -57,9 +52,7 @@ pipeline {
 				  }
 					
                 echo 'Deploying....'
-				unstash 'Artefact1'
-				unstash 'Artefact2'
-				
+				sh 'docker build -t deploy -f dockerfileDeploy .'				
 				
 				echo 'Deploying finished successfully!'
             }
