@@ -66,6 +66,7 @@ pipeline {
 		echo 'Pipeline finished successfully'		
     	}
     	
+		
     	unsuccessful {
 		emailext attachLog: true,
 			body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} Check attached log for more details...", 
