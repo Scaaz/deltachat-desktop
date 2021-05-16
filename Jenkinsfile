@@ -6,7 +6,7 @@ pipeline {
             steps {
 			script 	{
                     last_started = env.STAGE_NAME
-					pwd
+					
 					}
                 echo 'Building..'
                 sh 'apt install npm -y'
@@ -21,6 +21,7 @@ pipeline {
 				stash includes: 'node_modules/*', name: 'Artefact1'
 				stash includes: 'package-lock.json', name: 'Artefact2'
 				
+				pwd
 				echo 'Building finished successfully!'
             }
         }		
